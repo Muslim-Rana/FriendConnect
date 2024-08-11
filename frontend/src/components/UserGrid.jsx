@@ -1,6 +1,19 @@
+import { Grid } from "@chakra-ui/react";
+import {USERS} from "../dummyData/dummy";
+import UserCard from "./UserCard";
+
 const UserGrid = () => {
-    return (
-        <div>UserGrid</div>
-    )
-}
-export default UserGrid
+    return <Grid templateColumns={{
+        base:"1fr",
+        md:"repeat(2, 1fr)",
+        lg:"repeat(3, 1fr)",
+    }}
+    gap={4}
+    >
+        {USERS.map((user) => (
+            <UserCard key={user.id} user={user}/>
+        ))}
+    </Grid>
+};
+
+export default UserGrid;
