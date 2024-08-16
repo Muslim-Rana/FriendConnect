@@ -17,10 +17,11 @@ const UserCard = ({ user, setUsers }) => {
 			}
 			setUsers((prevUsers) => prevUsers.filter((u) => u.id !== user.id))
 			toast({
-				title:"User deleted successfully",
 				status:"success",
+				title:"Success",
+				description:"Friend deleted successfully",
 				duration:2000,
-				isClosable:true
+				position:"top-center",
 			})
 			
 		} catch (error) {
@@ -29,7 +30,8 @@ const UserCard = ({ user, setUsers }) => {
 				description: error.message,
 				status:"error",
 				duration:4000,
-				isClosable:true
+				isClosable:true,
+				position:"top-center",
 			})
 		}
 	}
@@ -47,7 +49,10 @@ const UserCard = ({ user, setUsers }) => {
 					</Flex>
 
 					<Flex>
-						<EditModal />
+						<EditModal 
+							user={user}
+							setUsers={setUsers}
+						/>
 						<IconButton
 							variant='ghost'
 							colorScheme='red'
